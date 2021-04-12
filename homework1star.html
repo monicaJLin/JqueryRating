@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>homework1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            background-color: #FFECEC;
+        }
+
+        .list {
+            overflow: auto;
+            list-style-type: none;
+            background-color: rgba(245, 199, 222, 0.897);
+        }
+
+            .list li {
+                float: left;
+                width: 7em;
+                border-right: 1px solid grey;
+                line-height: 3em;
+            }
+
+                .list li a {
+                    display: block;
+                    text-align: center;
+                }
+
+                    .list li a:hover {
+                        background-color: khaki;
+                        color: mediumslateblue;
+                    }
+
+                    .list li a:link {
+                        text-decoration: none;
+                    }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <div id="allpage">
+        <header>
+            <h2>Homework1</h2>
+            <nav>
+                <ul class="list">
+                    <li><a href="homework1star.html">homework1</a></li>
+                    <li><a href="test.html">homework2</a></li>
+                    <li><a href="homework3test.html">homework3</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div class="container">
+        <img id="img1" src="images/star.gif">
+        <img id="img2" src="images/star.gif">
+        <img id="img3" src="images/star.gif">
+        <img id="img4" src="images/star.gif">
+        <img id="img5" src="images/star.gif">
+        <span>Rating.........</span>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $(".container").find("img").on({
+                mouseover: function () {
+                    $(this).prop("src", "images/chngstar.gif");
+                    $(this).prevAll().attr("src", "images/chngstar.gif");
+                    $(".container span").text("Rating......." + ($(this).index() + 1) +"\n (Click it to get the score.)");
+                },
+                mouseout: function () {
+                    $(this).prop("src", "images/star.gif");
+                    $(this).nextAll().attr("src", "images/star.gif")
+                },
+                click: function () {
+                    $(".container").find("img").off("mouseenter");
+                    $(".container").find("img").off("mouseout");
+                    $(".container").off("mouseout");
+                    $(".container span").text("You give the score:" + ($(this).index() + 1) + "\n (Double Click to restart rating.)");
+                },
+                dblclick: function () {
+                    $(".container img").prop("src", "images/star.gif");
+                    $(".container span").text("");
+                }
+            });
+
+
+
+
+            
+
+
+        });
+
+    </script>
+</body>
+</html>
